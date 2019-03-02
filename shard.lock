@@ -46,7 +46,7 @@ shards:
 
   lucky:
     github: luckyframework/lucky
-    version: 0.13.3
+    commit: a1f0dc493cf581fde143f37a6ce74f5a67ecc74f
 
   lucky_cli:
     github: luckyframework/lucky_cli

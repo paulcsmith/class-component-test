@@ -1,4 +1,4 @@
-class PasswordResetRequests::NewPage < GuestLayout
+class PasswordResetRequests::NewPage < AuthLayout
   needs form : PasswordResetRequestForm
 
   def content
@@ -8,7 +8,7 @@ class PasswordResetRequests::NewPage < GuestLayout
 
   private def render_form(f)
     form_for PasswordResetRequests::Create do
-      field(f.email) { |i| email_input i }
+      mount Shared::Field, f.email, &.email_input
       submit "Reset Password", flow_id: "request-password-reset-button"
     end
   end
