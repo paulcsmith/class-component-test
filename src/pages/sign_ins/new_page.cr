@@ -1,5 +1,6 @@
 class SignIns::NewPage < AuthLayout
   needs form : SignInForm
+  @priv_meth = "WUT"
 
   def content
     h1 "Sign In"

@@ -4,10 +4,10 @@ abstract class AuthLayout
   abstract def content
   abstract def page_title
 
-  # This is the default page title. If you remove this method the compiler will
-  # help you remember to include a `page_title` method for every page because
-  # we used `abstract def page_title` above. Alternatively, you can leave this
-  # here and override the `page_title` class only on the pages you care about.
+  # The default page title. It is passed to `Shared::LayoutHead`.
+  #
+  # Add a `page_title` method to pages to override it. You can also remove
+  # This method so every page is required to have its own page title.
   def page_title
     "Welcome"
   end
