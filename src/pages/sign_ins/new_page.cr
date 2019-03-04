@@ -1,6 +1,5 @@
 class SignIns::NewPage < AuthLayout
   needs form : SignInForm
-  @priv_meth = "WUT"
 
   def content
     h1 "Sign In"
@@ -18,7 +17,7 @@ class SignIns::NewPage < AuthLayout
   end
 
   private def sign_in_fields(f)
-    mount Shared::Field.new(f.email), &.email_input(autofocus: "true")
+    mount Shared::Field.new(f.email, label: "Email plz"), &.email_input(autofocus: "true")
     mount Shared::Field.new(f.password), &.password_input(autofocus: "true")
   end
 end

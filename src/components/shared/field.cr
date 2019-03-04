@@ -21,9 +21,10 @@
 # differently in different parts of your app, e.g. `compact_field`
 class Shared::Field(T) < BaseComponent
   needs field : Avram::FillableField(T)
+  needs label : String | Bool = true
 
   def render
-    label_for @field
+    render_label(@label)
 
     with_defaults field: @field do |html|
       yield html
@@ -34,5 +35,15 @@ class Shared::Field(T) < BaseComponent
 
   def render
     render &.text_input
+  end
+
+  private def render_label(label_text : String)
+    label_for @field, text: label_text
+  end
+
+  private def render_label(label_text : Bool)
+    if label_text
+      render_label(Wordsmith::Inflector.humanize(@field.name))
+    end
   end
 end
