@@ -26,11 +26,9 @@ class Shared::Field(T) < BaseComponent
   def render
     render_label(@label)
 
-    with_defaults field: @field do |html|
-      yield html
+    mount Shared::Input.new(@field) do |input_builder|
+      yield input_builder
     end
-
-    mount Shared::FieldErrors.new(@field)
   end
 
   def render
