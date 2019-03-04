@@ -29,6 +29,10 @@ class Shared::Field(T) < BaseComponent
       yield html
     end
 
-    mount Shared::FieldErrors, @field
+    mount Shared::FieldErrors.new(@field)
+  end
+
+  def render
+    render &.text_input
   end
 end
